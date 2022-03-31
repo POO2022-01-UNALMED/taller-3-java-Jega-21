@@ -3,12 +3,12 @@ public class Control {
 	private TV tv;
 	
 	public void enlazar(TV tv) {
-		this.tv=tv;
-		this.tv.setControl(this);
+		this.setTv(tv);
+		tv.setControl(this);
 	}
 	
 	public TV getTv() {
-		return tv;
+		return this.tv;
 	}
 	
 	public void setTv(TV tv) {
