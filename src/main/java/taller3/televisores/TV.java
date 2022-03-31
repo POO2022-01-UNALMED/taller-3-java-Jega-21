@@ -2,8 +2,8 @@ package taller3.televisores;
 public class TV {
 	// Atributos.
 	private Marca marca;
-	private int canal;
-	private int precio;
+	private int canal = 1;
+	private int precio = 500;
 	private boolean estado;
 	private int volumen;
 	private Control control;
@@ -13,14 +13,12 @@ public class TV {
 	public TV (Marca marca, boolean estado) {
 		this.marca = marca;
 		this.estado = estado;
-		canal = 1;
-		volumen = 500;
 		numTV++;
 	}
 	
 	// Getters and Setters.
 	public Marca getMarca() {
-		return this.marca;
+		return marca;
 	}
 
 	public void setMarca(Marca marca) {
@@ -28,17 +26,21 @@ public class TV {
 	}
 
 	public int getCanal() {
-		return this.canal;
+		return canal;
 	}
 
 	public void setCanal(int canal) {
-		if(canal > 0 && canal < 120 && this.getEstado()) {  // Condicional de que el TV debe estár encendido.
-			this.canal = canal;
+		if(canal <= 120) {
+			if (canal > 0) {
+				if(estado == true) {
+					this.canal = canal;
+				}
+			}
 		}
 	}
 
 	public int getPrecio() {
-		return this.precio;
+		return precio;
 	}
 
 	public void setPrecio(int precio) {
@@ -46,17 +48,21 @@ public class TV {
 	}
 
 	public int getVolumen() {
-		return this.volumen;
+		return volumen;
 	}
 
 	public void setVolumen(int volumen) {
-		if(this.getVolumen() < 7 && this.getVolumen() > 0 && this.getEstado()) {  // Condicional de que el TV debe estár encendido.
-			this.volumen = volumen;
+		if(volumen < 8) {
+			if (volumen > 0) {
+				if(estado == true) {
+					this.volumen = volumen;
+				}
+			}
 		}
 	}
 
 	public Control getControl() {
-		return this.control;
+		return control;
 	}
 
 	public void setControl(Control control) {
@@ -73,31 +79,45 @@ public class TV {
 	
 	// getEstado.
 	public boolean getEstado() {
-		return this.estado;
+		return estado;
 	}	
 	
 	// Metodos cambio de canal.
 	public void canalUp() {
-		if(this.canal < 120 && this.getEstado()) {
-			setCanal(this.canal+1);
+		if((canal + 1) <= 120) {
+			if (estado == true) {
+				this.canal++;
+			}
 		}
 	}
 	public void canalDown() {
-		setCanal(this.canal-1);
+		if ((canal - 1) > 0) {
+			if(estado == true) {
+				this.canal--;
+			}
+		}
 	}
 			
 	// Metodos cambio de volumen.
 	public void volumenUp() {
-		setVolumen(this.volumen+1);
+		if((volumen +1 ) < 8) {
+			if(estado == true) {
+				this.volumen++;
+			}
+		}
 	}
 	public void volumenDown() {
-		setVolumen(this.volumen-1);
+		if((volumen - 1) > 0) {
+			if(estado == true) {
+				this.volumen--;
+			}
+		}
 	}
 
 	public static int getNumTV() {
 		return numTV;
 	}
-	public static void setNumTV(int numTV) {
-		TV.numTV = numTV;
+	public static void setNumTV(int num) {
+		TV.numTV = num;
 	}	
 }
