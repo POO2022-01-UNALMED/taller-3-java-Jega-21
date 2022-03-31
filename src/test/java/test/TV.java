@@ -68,6 +68,9 @@ public class TV {
 	public void turnOff() {
 		this.estado = false;
 	}
+	public static void setNumTV(int numTV) {
+		TV.numTV =  numTV;
+	}
 	
 	// getEstado.
 	public boolean getEstado() {
@@ -90,5 +93,11 @@ public class TV {
 	}
 	public void volumenDown() {
 		setVolumen(this.volumen-1);
+	}
+	
+	@Override
+	public String toString() {
+		return "TV{" + "marca=" + marca + ", canal=" + canal + ", precio=" + precio + ", estado=" + estado +
+				", volumen=" + volumen + ", control=" + control + "}";
 	}
 }
